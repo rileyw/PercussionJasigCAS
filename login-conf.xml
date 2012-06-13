@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- File: <RHYTHMYX>/AppServer/server/rx/conf/login-conf.xml -->
+<!DOCTYPE policy
+  PUBLIC "-//JBoss//DTD JBOSS Security Config 3.0//EN" "http://www.jboss.org/j2ee/dtd/security_config.dtd">
+<policy>
+
+	<!-- Find the following <application-policy/> -->
+	<application-policy name="rx.policy">
+
+		<!-- Insert the following <authentication/> within the <application-policy/> 
+			as the first entry. -->
+		<authentication>
+			<login-module code="com.percussion.forum.CASLoginModule"
+				flag="optional">
+				<module-option name="ticketValidatorClass">org.jasig.cas.client.validation.Cas10TicketValidator</module-option>
+				<module-option name="casServerUrlPrefix">https://jasig.cas.hostname</module-option>
+				<module-option name="tolerance">20000</module-option>
+				<module-option name="defaultRoles">members</module-option>
+				<module-option name="principalGroupName">CallerPrincipal</module-option>
+				<module-option name="cacheAssertions">true</module-option>
+				<module-option name="cacheTimeout">480</module-option>
+			</login-module>
+		</authentication>
+	</application-policy>
+
+	<!-- Find the following <application-policy/> -->
+	<application-policy name="other">
+		<!-- Insert the following <authentication/> within the <application-policy/> 
+			as the first entry. -->
+		<authentication>
+			<login-module code="com.percussion.forum.CASLoginModule"
+				flag="optional">
+				<module-option name="ticketValidatorClass">org.jasig.cas.client.validation.Cas10TicketValidator</module-option>
+				<module-option name="casServerUrlPrefix">https://jasig.cas.hostname</module-option>
+				<module-option name="tolerance">20000</module-option>
+				<module-option name="defaultRoles">members</module-option>
+				<module-option name="principalGroupName">CallerPrincipal</module-option>
+				<module-option name="cacheAssertions">true</module-option>
+				<module-option name="cacheTimeout">480</module-option>
+			</login-module>
+		</authentication>
+	</application-policy>
+</policy>
