@@ -142,7 +142,7 @@ public class CASLoginModule implements LoginModule {
         String ticketValidatorClass = null;
 
         for (final String key : options.keySet()) {
-            log.trace("CUSTOM CASMODULELOGIN: Processing option " + key);
+            log.trace("Processing option " + key);
             if ("service".equals(key)) {
                 this.service = (String) options.get(key);
                 log.debug("Set service=" + this.service);
@@ -307,9 +307,6 @@ public class CASLoginModule implements LoginModule {
                 this.ticket = null;
             }
         }
-        //this.subject.getPrivateCredentials().clear();
-        //this.subject.getPrivateCredentials().addAll(this.subject.getPrincipals());
-        log.debug(this.subject.getPrincipals()+""+this.subject.getPublicCredentials()+""+this.subject.getPrivateCredentials());
         PSJaasUtils.loadSubjectRoles(this.subject, this.assertion.getPrincipal().getName());
         return true;
     }
