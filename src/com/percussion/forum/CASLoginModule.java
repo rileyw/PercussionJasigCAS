@@ -197,7 +197,7 @@ public class CASLoginModule implements LoginModule {
             throw (LoginException) new LoginException("Callback handler does not support PasswordCallback and TextInputCallback.").initCause(e);
         }
 
-        if (ticketCallback.getPassword() != null) {
+        if (ticketCallback.getPassword() != null && isService(serviceCallback.getName())) {
             this.ticket = new TicketCredential(new String(ticketCallback.getPassword()));
             final String service = CommonUtils.isNotBlank(serviceCallback.getName()) ? serviceCallback.getName() : this.service;
 
@@ -235,7 +235,11 @@ public class CASLoginModule implements LoginModule {
         return true;
     }
 
-    public boolean abort() throws LoginException {
+    private boolean isService(String name) {
+		return (name.indexOf("http")>=0)?true:false;
+	}
+
+	public boolean abort() throws LoginException {
         if (this.ticket != null) {
             this.ticket = null;
         }
