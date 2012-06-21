@@ -38,6 +38,8 @@
 				<module-option name="cacheAssertions">true</module-option>
 				<module-option name="cacheTimeout">480</module-option>
 			</login-module>
+		<!-- Change the following login-module flag from "required" to "sufficient" -->
+			<login-module code="org.jboss.security.auth.spi.UsersRolesLoginModule" flag="sufficient"/>
 		</authentication>
 	</application-policy>
 </policy>
